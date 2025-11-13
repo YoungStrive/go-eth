@@ -14,12 +14,14 @@ import (
 
 func main() {
 	//获取到客户端
-	client, err := ethclient.Dial("https://mainnet.infura.io/v3/e7cbd13b843d4556bb9947cbf12cdbda")
+	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/pNX-SE87t8JfMGoicYCwy")
 	if err != nil {
 		log.Fatal(err)
 	}
+	var privateStr = "fad9c8855b740a0b7ed4c221dbad0f33a83a49cad6b3fe8d5817ac83d38b6a19"
+
 	//加载自己的私钥
-	privateKey, err := crypto.HexToECDSA("fad9c8855b740a0b7ed4c221dbad0f33a83a49cad6b3fe8d5817ac83d38b6a19")
+	privateKey, err := crypto.HexToECDSA(privateStr)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,7 +50,7 @@ func main() {
 		log.Fatal(err)
 	}
 	//转给谁 转入的 地址
-	toAddress := common.HexToAddress("0x4592d8f8d7b001e72cb26a73e4fa1806a51ac79d")
+	toAddress := common.HexToAddress("0xf9626ac88c765de3961047f5706f7798756462fb")
 	var data []byte
 	tx := types.NewTransaction(nonce, toAddress, value, gasLimit, gasPrice, data)
 
