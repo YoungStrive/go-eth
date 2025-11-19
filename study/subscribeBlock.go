@@ -11,7 +11,7 @@ import (
 // 订阅区块信息
 func main() {
 	//订阅区块需要 websocket RPC URL。
-	client, err := ethclient.Dial("wss://ropsten.infura.io/ws")
+	client, err := ethclient.Dial("wss://eth-sepolia.g.alchemy.com/v2/pNX-SE87t8JfMGoicYCwy")
 	if err != nil {
 		log.Fatal(err)
 	}

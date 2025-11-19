@@ -12,18 +12,18 @@ import (
 
 // 收据
 func main() {
-	client, err := ethclient.Dial("https://mainnet.infura.io/v3/e7cbd13b843d4556bb9947cbf12cdbda")
+	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/pNX-SE87t8JfMGoicYCwy")
 	if err != nil {
 		log.Fatal(err)
 	}
 	//根据区块hash获取收据
-	blockHash := common.HexToHash("0x1a1eaebdeb38584b158780e18972aa2b765930eb43b12606d2c92ce1cad7a766")
+	blockHash := common.HexToHash("0x6786ef19c5a7f323cc640c8513678e98804f88a0677839bd9c38a875d9514416")
 	receiptByHash, err := client.BlockReceipts(context.Background(), rpc.BlockNumberOrHashWithHash(blockHash, false))
 	if err != nil {
 		log.Fatal(err)
 	}
 	//根据区块编号获取收据
-	blockNumber := big.NewInt(9543800)
+	blockNumber := big.NewInt(9628431)
 	receiptsByNum, err := client.BlockReceipts(context.Background(), rpc.BlockNumberOrHashWithNumber(rpc.BlockNumber(blockNumber.Int64())))
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +39,7 @@ func main() {
 		break
 	}
 	//===================================================================================
-	txHash := common.HexToHash("0x0021da846b0cff6926893c3a0581f0bebc2739f78951c80d07ab6ec31b668162")
+	txHash := common.HexToHash("0x6786ef19c5a7f323cc640c8513678e98804f88a0677839bd9c38a875d9514416")
 	receipt, err := client.TransactionReceipt(context.Background(), txHash)
 	if err != nil {
 		log.Fatal(err)
