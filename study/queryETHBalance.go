@@ -5,15 +5,22 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/joho/godotenv"
 	"log"
 	"math"
 	"math/big"
+	"os"
 )
 
 // 查询ETH余额
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal(err)
+	}
+	alchemyPrivateKey := os.Getenv("ALCHEMY_PRIVATE_KEY")
 	//获取到客户端
-	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/pNX-SE87t8JfMGoicYCwy")
+	client, err := ethclient.Dial("https://eth-sepolia.g.alchemy.com/v2/" + alchemyPrivateKey)
 	if err != nil {
 		log.Fatal(err)
 	}
